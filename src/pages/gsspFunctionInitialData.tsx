@@ -5,6 +5,19 @@ import { getProduct } from "../server/api/example2-split-files/getProduct";
 import { fakePrisma } from "../server/db";
 import { api } from "../utils/api";
 
+export const getServerSideProps = async () => {
+  // would usually get id from url or something
+  const id = 5;
+
+  const product = await getProduct({ fakePrisma, input: { id } });
+  return {
+    props: {
+      id,
+      product,
+    },
+  };
+};
+
 export default function Page(
   props: InferGetServerSidePropsType<typeof getServerSideProps>,
 ) {
@@ -36,16 +49,3 @@ export default function Page(
     </div>
   );
 }
-
-export const getServerSideProps = async () => {
-  // would usually get id from url or something
-  const id = 5;
-
-  const product = await getProduct({ fakePrisma, input: { id } });
-  return {
-    props: {
-      id,
-      product,
-    },
-  };
-};
