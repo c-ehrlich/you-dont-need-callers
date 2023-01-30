@@ -1,28 +1,21 @@
-# Create T3 App
+# How to call tRPC Procedures
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+## Intro
 
-## What's next? How do I make an app with this?
+People ask this a lot, how to call a tRPC procedure from another procedure
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+lets look at a scenario for this
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+- procedure that gets a thing, does some business logic, returns something
+- then we have a thing that wants to call it
+- we get a lot of questions from people who read the trpc docs, and think the caller is what they're looking for, and are confused that it doesn't work.
+- the reason it doesn't work is that using the caller creates a whole new router, and you're doing that inside the router, so it becomes recursive, and typescript doesn't like that
+- so how do you do it? is there some other magic?
+- ! heres the good news: when you ask how to do this, you think you're asking a question about trpc, but what you're actually asking is a much more fundamental question about api design or even programming as a whole.
+- so whats the answer? functions.
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+- show extracting into a function
 
-## Learn More
+- how do you organize this?
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
-
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
-
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
-
-## How do I deploy this?
-
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+-
