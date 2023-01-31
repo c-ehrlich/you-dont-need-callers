@@ -1,5 +1,5 @@
 import { exampleCallerRouter } from "./example0-problem/products";
-import { exampleOneFileRouter } from "./example1-one-file/product";
+import { exampleExtractedFunctionRouter } from "./example1-one-file/product";
 import { exampleSplitFileRouter } from "./example2-split-files/_product";
 import { createTRPCRouter } from "./trpc";
 
@@ -10,7 +10,7 @@ import { createTRPCRouter } from "./trpc";
  */
 export const appRouter = createTRPCRouter({
   example0: exampleCallerRouter,
-  example1: exampleOneFileRouter,
+  example1: exampleExtractedFunctionRouter,
   example2: exampleSplitFileRouter,
 });
 

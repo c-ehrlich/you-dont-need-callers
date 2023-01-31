@@ -11,7 +11,7 @@ export const createTestCaller = () => {
   );
 };
 
-// Test the endpoints
+// Test the procedures
 describe("example", () => {
   describe("getOne", async () => {
     const publicCaller = createTestCaller();

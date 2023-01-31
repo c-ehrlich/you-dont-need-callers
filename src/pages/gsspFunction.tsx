@@ -8,6 +8,7 @@ export const getServerSideProps = async () => {
   const id = 5;
 
   const product = await getProduct({ fakePrisma, input: { id } });
+
   return {
     props: {
       id,

@@ -20,19 +20,20 @@ async function getProduct({
   return product;
 }
 
-export const exampleOneFileRouter = createTRPCRouter({
+export const exampleExtractedFunctionRouter = createTRPCRouter({
   getOne: publicProcedure
     .input(getProductInputSchema)
     .query(({ ctx, input }) => {
       return getProduct({ fakePrisma: ctx.fakePrisma, input });
     }),
+
   getOneDiscounted: publicProcedure
     .input(getProductInputSchema)
     .query(async ({ ctx, input }) => {
       const product = await getProduct({ fakePrisma: ctx.fakePrisma, input });
       const discountedProduct = {
         ...product,
-        price: product.price * 0.5,
+        price: product.price / 2,
       };
       return discountedProduct;
     }),

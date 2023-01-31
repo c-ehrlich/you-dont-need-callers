@@ -1,6 +1,5 @@
 import { TRPCError } from "@trpc/server";
 import z from "zod";
-import { fakePrisma } from "../../db";
 import { appRouter } from "../root";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
@@ -10,7 +9,7 @@ export const exampleCallerRouter = createTRPCRouter({
   getOne: publicProcedure
     .input(getProductInputSchema)
     .query(async ({ ctx, input }) => {
-      const product = await fakePrisma.getProductById(input.id);
+      const product = await ctx.fakePrisma.getProductById(input.id);
       if (product.id === 69) {
         throw new TRPCError({ code: "UNAUTHORIZED", message: "Nice but no" });
       }
